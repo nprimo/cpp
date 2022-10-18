@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 20:39:45 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/16 21:43:47 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/18 11:54:58 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ class PhoneBook {
 	public:
 		PhoneBook(void);
 		~PhoneBook(void);
-		void add_contact (void);
+		int		size(void);
+		void	add_contact (void);
+		void	search_contact (void);
 	private:
 		Contact	phone_book[8];
 };
