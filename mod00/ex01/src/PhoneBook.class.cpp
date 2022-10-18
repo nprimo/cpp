@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 20:41:26 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/18 11:58:42 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/18 13:08:24 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 #include <cctype>
 #include "./PhoneBook.class.hpp"
 
-using namespace std;
 
 PhoneBook::PhoneBook(void)
 {
-	cout << "Created phone book" << endl;
+	std::cout << "Created phone book" << std::endl;
 	return;
 }
 
 PhoneBook::~PhoneBook(void)
 {
-	cout << "Delete phone book" << endl;
+	std::cout << "Delete phone book" << std::endl;
 	return;
 }
 
@@ -38,16 +37,16 @@ int	PhoneBook::size(void) {
 	return (size);
 }
 
-string get_field_value(string field_name)
+std::string get_field_value(std::string field_name)
 {
-	string input = "";
+	std::string input;
 
 	while (input.empty())
 	{
-		cout << "Insert " << field_name << ": ";
-		getline(cin, input); // how to wait for input?
+		std::cout << "Insert " << field_name << ": ";
+		std::getline(std::cin, input); // how to wait for input?
 		if (input.empty())
-			cout << field_name << " cannot be empty!" << endl;
+			std::cout << field_name << " cannot be empty!" << std::endl;
 	}
 	return (input);
 }
@@ -55,8 +54,8 @@ string get_field_value(string field_name)
 void PhoneBook::add_contact(void)
 {
 	static int new_contact_pos;
-	string field_values[5];
-	string field_names[5] = {
+	std::string field_values[5];
+	std::string field_names[5] = {
 		"first name", "last name", "nickname", "phone number", "darkest secret"};
 
 	for (int i = 0; i < 5; i++) {
@@ -64,31 +63,31 @@ void PhoneBook::add_contact(void)
 	}
 	new_contact_pos %= 8;
 	this->phone_book[new_contact_pos++].set_contact_fields(field_values);
-	cout << "Added new contact!" << endl;
+	std::cout << "Added new contact!" << std::endl;
 	return;
 }
 
 void PhoneBook::search_contact(void) {
-	string	header[4] = {
+	std::string	header[4] = {
 		"INDEX", "FIRST NAME", "LAST NAME", "NICKNAME"
 	};
 	
 	if (this->size() < 0) {
-		cout << "No contacts saved" << endl;
+		std::cout << "No contacts saved" << std::endl;
 		return ;
 	}
 	for (int i = 0; i < 4; i++) {
-		cout << right << setw(10) << header[i] << "|";
+		std::cout << std::right << std::setw(10) << header[i] << "|";
 	}
-	cout << endl;
+	std::cout << std::endl;
 	for (int i = 0; i < 8; i++) {
 		if (this->phone_book[i].is_set()) {
 			this->phone_book[i].display_contact_short(i);
 		}
 	}
-	string				pos_input = "";
+	std::string				pos_input = "";
 	int					pos = 9;
-	string::size_type	sz;
+	std::string::size_type	sz;
 	
 	while (pos_input.size() != 1 || isdigit(pos_input[0]) == 0 || pos > this->size()) {
 		pos_input = get_field_value("contact postion");

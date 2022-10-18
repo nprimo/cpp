@@ -13,7 +13,7 @@ RM = rm -rf
 	$(CC) $(CFLAGS) -I $(INC) -c $< -o $@
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -I $(INC) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 all: $(NAME)
 

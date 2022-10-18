@@ -6,25 +6,25 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:21:21 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/18 12:32:18 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/18 13:07:03 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "../inc/Zombie.hpp"
 
-using namespace std;
+
 
 Zombie::Zombie(void) {
-	cout << "Zombie created" << endl;
+	std::cout << "Zombie created" << std::endl;
 	return ;
 }
 
 Zombie::~Zombie(void) {
-	cout << "Zombie out" << endl;
+	std::cout << "Zombie out" << std::endl;
 	return ;
 }
 
 void	Zombie::announce(void) {
-	cout << this->name << ": BraiiiiiiinnnzzzZ..." << endl;
+	std::cout << this->name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
