@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 20:41:26 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/18 13:08:24 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/18 18:35:16 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ void PhoneBook::search_contact(void) {
 			this->phone_book[i].display_contact_short(i);
 		}
 	}
-	std::string				pos_input = "";
+	std::string			pos_input = "";
 	int					pos = 9;
 	std::string::size_type	sz;
 	
-	while (pos_input.size() != 1 || isdigit(pos_input[0]) == 0 || pos > this->size()) {
+	while (pos_input.size() != 1 || std::isdigit(pos_input[0]) == 0 || pos > this->size()) {
 		pos_input = get_field_value("contact postion");
-		pos = stoi(pos_input, &sz);
+		pos = pos_input[0] - '0';
 	}
 	this->phone_book[pos].display_contact_full();
 }
