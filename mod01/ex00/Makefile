@@ -5,7 +5,7 @@ SRC = $(wildcard src/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Wall -std=c++98
+CFLAGS = -Wall -Wextra -Wall -std=c++98 -fsanitize=address
 DFLAGS = -g -fsanitize=address
 RM = rm -rf
 
