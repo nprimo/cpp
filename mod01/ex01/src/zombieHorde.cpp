@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 11:28:08 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/19 12:08:47 by nprimo           ###   ########.fr       */
+/*   Created: 2022/10/19 12:06:31 by nprimo            #+#    #+#             */
+/*   Updated: 2022/10/19 12:15:14 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
 #include "../inc/Zombie.hpp"
 
-Zombie*	newZombie(std::string name) {
-	Zombie* zombie;
+Zombie* zombieHorde(int N, std::string name) {
+	Zombie* horde = new Zombie[N];
 
-	zombie = new Zombie;
-	zombie->set_name(name);
-	return zombie;
+	for (int i = 0; i < N; i++) {
+		horde[i].set_name(name + std::to_string(i));
+	}
+	return (horde);
 }
