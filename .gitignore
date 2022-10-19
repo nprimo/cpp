@@ -10,3 +10,8 @@ zombie
 horde
 pointer
 violence
+sed
+
+# mod01 tester files
+*.replace
+txt*
