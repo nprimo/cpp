@@ -1,0 +1,10 @@
+*.o
+.vscode
+
+# mod 00 binaries
+megaphone
+phonebook
+
+# mod 01 binaries
+zombie
+horde

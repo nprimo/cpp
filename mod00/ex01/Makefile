@@ -8,7 +8,7 @@ CFLAGS = -Wall -Wextra -Wall -std=c++98
 DFLAGS = -g -fsanitize=address
 RM = rm -rf
 
-%.o: %.c
+%.o: %.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 20:48:52 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/18 13:09:03 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/19 13:37:19 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ void	Contact::set_contact_fields(std::string field_values[5]) {
 }
 
 void	Contact::display_contact_short(int index) {
+	std::string indexStr;
+	// move index to indexStr; 
 	std::string	to_print[4] = {
-		std::to_string(index), this->first_name, this->last_name, this->nickname
+		indexStr, this->first_name, this->last_name, this->nickname
 	};
 	for (int i = 0; i < 4; i++) {
 		if (to_print[i].size() > 10) {
