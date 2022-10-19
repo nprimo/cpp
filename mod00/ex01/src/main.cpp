@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:37:47 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/18 13:08:24 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/19 15:06:31 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 
 
-int main(int ac, char **av)
+int main(void)
 {
 	bool		listening (true);
 	PhoneBook	phone_book;

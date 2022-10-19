@@ -6,13 +6,14 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 20:41:26 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/19 13:35:56 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/19 15:26:22 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip>
 #include <cctype>
+#include <sstream>
 #include "./PhoneBook.class.hpp"
 
 
@@ -39,11 +40,12 @@ int	PhoneBook::size(void) {
 
 std::string get_field_value(std::string field_name)
 {
-	std::string input;
+	std::string input = "";
 
 	while (input.empty())
 	{
 		std::cout << "Insert " << field_name << ": ";
+		std::cin.ignore();
 		std::getline(std::cin, input); // how to wait for input?
 		if (input.empty())
 			std::cout << field_name << " cannot be empty!" << std::endl;
