@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:19:40 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/19 11:57:14 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/19 15:31:24 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Zombie {
 		void	announce(void);
 		void	set_name(std::string name);
 	private:
-		std::string	_name = "default";
+		std::string	_name;
 };
 
 #endif

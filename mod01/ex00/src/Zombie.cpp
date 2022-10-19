@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 12:21:21 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/19 12:00:22 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/19 15:30:39 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 Zombie::Zombie(void) {
 	std::cout << "Zombie created" << std::endl;
+	this->_name = "default";
 	return ;
 }
 
