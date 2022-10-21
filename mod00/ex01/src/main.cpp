@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:37:47 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/19 15:06:31 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/21 15:18:23 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,11 @@ int main(void)
 	{
 		std::cout << "--- Waiting for command:\n";
 		std::string cmd;
-		std::cin >> cmd;
+		std::getline(std::cin, cmd);
 		if (cmd == "ADD") {
-			// std::cout << "Add contact" << std::endl;
 			phone_book.add_contact();
 		} else if (cmd == "SEARCH") {
 			phone_book.search_contact();
-			// std::cout << "Search contacts" << std::endl;
 		} else if (cmd == "EXIT") {
 			std::cout << "--- Bye bye" << std::endl;
 			listening = false;
