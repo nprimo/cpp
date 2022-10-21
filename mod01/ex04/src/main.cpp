@@ -6,7 +6,7 @@
 /*   By: nprimo <nprimo@student.42lisboa.com>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:36:09 by nprimo            #+#    #+#             */
-/*   Updated: 2022/10/19 18:26:48 by nprimo           ###   ########.fr       */
+/*   Updated: 2022/10/21 17:22:13 by nprimo           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	readFile(char *fname, std::string *content)
 	std::string		line;
 	
 	file.open(fname);
-	if (file.is_open())
+	if (file.is_open() && !file.fail())
 	{
 		while (getline(file, line))
 		{
@@ -42,7 +42,7 @@ void	createFile(char *fname, std::string content)
 	std::ofstream	file;
 
 	file.open(fname);
-	if (file.is_open())
+	if (file.is_open() && !file.fail())
 	{
 		file << content;
 		file.close();
