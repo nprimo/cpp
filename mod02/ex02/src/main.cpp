@@ -9,5 +9,7 @@ int main( void )
 	std::cout << (b > a) << std::endl;
 	std::cout << (a < b) << std::endl;
 	std::cout << (b < a) << std::endl;
+	std::cout << (b + a) << std::endl;
+	std::cout << b << std::endl;
 	return (0);
 }

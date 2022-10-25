@@ -90,6 +90,14 @@ bool	Fixed::operator!=(const Fixed &a)
 	return ((*this > a) || (*this < a));
 }
 
+Fixed&	Fixed::operator+(const Fixed &a)
+{
+	Fixed 	result;
+
+	result.setRawBits(this->getRawBits() + a.getRawBits());
+	return (result);
+}
+
 std::ostream&	operator<<(std::ostream& out, const Fixed &val)
 {
 	out << val.toFloat();
