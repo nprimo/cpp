@@ -13,6 +13,10 @@ violence
 sed
 harl
 
+# mod 02 binaries
+fixed
+fixed1
+
 # mod01 tester files
 *.replace
 txt*
