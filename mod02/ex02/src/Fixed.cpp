@@ -56,6 +56,7 @@ float	Fixed::toFloat(void) const
 	return ((float) this->fixed_point / (float) (1 << this->fract_bits));
 }
 
+// comparison
 bool	Fixed::operator>(const Fixed &a)
 {
 	return (this->getRawBits() > a.getRawBits());
@@ -86,6 +87,7 @@ bool	Fixed::operator!=(const Fixed &a)
 	return ((*this > a) || (*this < a));
 }
 
+// arithmetic operation
 Fixed	Fixed::operator+(const Fixed &a)
 {
 	Fixed 	result;
@@ -100,6 +102,85 @@ Fixed	Fixed::operator-(const Fixed &a)
 
 	result.setRawBits(this->getRawBits() - a.getRawBits());
 	return (result);
+}
+
+Fixed	Fixed::operator*(const Fixed &a)
+{
+	Fixed	result;
+
+	result.setRawBits(this->getRawBits() * a.getRawBits());
+	result.setRawBits(result.getRawBits() / (1 << result.fract_bits));
+	return (result);
+}
+
+Fixed	Fixed::operator/(const Fixed &a)
+{
+	Fixed	result;
+
+	result.setRawBits(((float)this->getRawBits() / a.getRawBits())
+			* (1 << this->fract_bits));
+	return (result);
+}
+
+// increment
+Fixed	Fixed::operator++(int)
+{
+	Fixed	prev_value;
+
+	prev_value = Fixed(*this);
+	this->setRawBits(this->getRawBits() + 1);
+	return (prev_value);
+}
+
+Fixed&	Fixed::operator++(void)
+{
+	(*this)++;
+	return (*this);
+}
+
+// decrement
+Fixed	Fixed::operator--(int)
+{
+	Fixed	prev_value;
+
+	prev_value = Fixed(*this);
+	this->setRawBits(this->getRawBits() - 1);
+	return (prev_value);
+}
+
+Fixed&	Fixed::operator--(void)
+{
+	(*this)--;
+	return (*this);
+}
+
+// min max functions
+Fixed&	Fixed::min(Fixed &a, Fixed &b)
+{
+	if (a < b)
+		return (a);
+	return (b);
+}
+
+Fixed&	Fixed::min(const Fixed &a, const Fixed &b)
+{
+	if (&a < &b)
+		return ((Fixed&) a);
+	return ((Fixed&) b);
+}
+
+Fixed&	Fixed::max(Fixed &a, Fixed &b)
+{
+	if (a > b)
+		return (a);
+	return (b);
+}
+
+Fixed&	Fixed::max(const Fixed &a, const Fixed &b)
+{
+	if (&a > &b)
+		return ((Fixed&) a);
+	return ((Fixed&) b);
 }
 
 std::ostream&	operator<<(std::ostream& out, const Fixed &val)
