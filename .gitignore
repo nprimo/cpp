@@ -19,6 +19,9 @@ fixed
 fixed1
 fixed2
 
+# mode 03 binaries
+clap
+
 # mod01 tester files
 *.replace
 txt*
