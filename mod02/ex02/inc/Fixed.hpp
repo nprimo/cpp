@@ -26,7 +26,8 @@ class Fixed
 		bool	operator<=(const Fixed &a);
 		bool	operator==(const Fixed &a);
 		bool	operator!=(const Fixed &a);
-		Fixed&	operator+(const Fixed &a);
+		Fixed	operator+(const Fixed &a);
+		Fixed	operator-(const Fixed &a);
 };
 
 std::ostream&	operator<<(std::ostream& out, const Fixed &val);
