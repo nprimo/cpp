@@ -1,3 +1,4 @@
+
 #ifndef SCAVTRAP_H
 # define SCAVTRAP_H
 
@@ -7,18 +8,15 @@
 class ScavTrap : public ClapTrap
 {
 private:
-	std::string	name;
-	unsigned	hit_points;
-	unsigned	energy_points;
-	unsigned	attack_damage;
+
 public:
 	ScavTrap(void);
 	ScavTrap(std::string name);
 	ScavTrap(const ScavTrap &other);
 	~ScavTrap(void);
-	ScavTrap&	operator=(ScavTrap &other);
-	void	attack(const std::string &target);
-	void	guardGate(void);
+	ScavTrap&		operator=(ScavTrap &other);
+	virtual void	attack(const std::string &target);
+	void			guardGate(void);
 };
 
 #endif

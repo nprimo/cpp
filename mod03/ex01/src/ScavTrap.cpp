@@ -2,11 +2,7 @@
 
 ScavTrap::ScavTrap(void)
 {
-	this->name = "default";
-	this->hit_points = 100;
-	this->energy_points = 50;
-	this->attack_damage = 20;
-	std::cout << this->name << " ScavTrap created" << std::endl;
+	std::cout << "-- " << this->name << " ScavTrap created" << std::endl;
 	return ;
 }
 
@@ -16,11 +12,11 @@ ScavTrap::ScavTrap(std::string name)
 	this->hit_points = 100;
 	this->energy_points = 50;
 	this->attack_damage = 20;
-	std::cout << this->name << " ScavTrap created" << std::endl;
+	std::cout << "-- " << this->name << " ScavTrap created" << std::endl;
 	return ;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other.name)
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap()
 {
 	std::cout << "Scav copy constructor called" << std::endl;
 	this->name = other.name;
@@ -32,7 +28,7 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other.name)
 
 ScavTrap::~ScavTrap(void)
 {
-	std::cout << this->name << " ScavTrap destroyed" << std::endl;
+	std::cout << "-- " << this->name << " ScavTrap destroyed" << std::endl;
 	return ;
 }
 
@@ -49,15 +45,8 @@ ScavTrap&	ScavTrap::operator=(ScavTrap &other)
 
 void	ScavTrap::attack(const std::string &target)
 {
-	if (this->energy_points > 0 && this->hit_points > 0)
-	{
-		std::cout << "ScavTrap " << this->name << " attacks " << target << \
-		", causing "<< this->attack_damage << " points of damage!" << std::endl;
-	}
-	else
-	{
-		std::cout << "ScavTrap " << this->name << " cannot attack" << std::endl;
-	}
+	std::cout << "ScavTrap " << this->name << " is trying to attack..." << std::endl;
+	this->ClapTrap::attack(target);
 	return ;
 }
 

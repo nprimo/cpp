@@ -3,19 +3,18 @@
 int main(void)
 {
 	ClapTrap a ("mario");
-	ClapTrap b;
 	ScavTrap d ("wario");
-	ScavTrap c;
+	ScavTrap c (d);
 
 	a.attack("luigi");
-	b = a;
-	b.takeDamage(2);
 	d.attack("someone");
 	a.beRepaired(3);
+	for (int i = 0; i < 50; i++)
+		d.attack("someone else");
 	d.takeDamage(4);
 	d.guardGate();
-	c = d;
 	c.guardGate();
 	c.beRepaired(10);
+	d.beRepaired(10);
 	return (0);
 }
