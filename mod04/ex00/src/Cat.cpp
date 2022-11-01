@@ -1,4 +1,4 @@
-#include "../inc/Animal.hpp"
+#include "../inc/Cat.hpp"
 
 Cat::Cat(void)
 {

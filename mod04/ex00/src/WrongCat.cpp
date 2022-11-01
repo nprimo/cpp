@@ -1,4 +1,4 @@
-#include "../inc/Animal.hpp"
+#include "../inc/WrongCat.hpp"
 
 WrongCat::WrongCat(void)
 {

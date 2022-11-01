@@ -1,4 +1,4 @@
-#include "../inc/Animal.hpp"
+#include "../inc/Dog.hpp"
 
 Dog::Dog(void)
 {
