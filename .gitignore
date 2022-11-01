@@ -21,7 +21,11 @@ fixed2
 
 # mode 03 binaries
 clap
+scav
+frag
 
 # mod01 tester files
 *.replace
 txt*
+
+
