@@ -20,6 +20,16 @@ ScavTrap::ScavTrap(std::string name)
 	return ;
 }
 
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other.name)
+{
+	std::cout << "Scav copy constructor called" << std::endl;
+	this->name = other.name;
+	this->attack_damage = other.attack_damage;
+	this->hit_points = other.hit_points;
+	this->energy_points = other.energy_points;
+	return ;
+}
+
 ScavTrap::~ScavTrap(void)
 {
 	std::cout << this->name << " ScavTrap destroyed" << std::endl;
