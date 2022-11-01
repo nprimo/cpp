@@ -19,10 +19,13 @@ fixed
 fixed1
 fixed2
 
-# mode 03 binaries
+# mod 03 binaries
 clap
 scav
 frag
+
+# mod 04 binaries
+poly
 
 # mod01 tester files
 *.replace
