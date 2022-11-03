@@ -7,17 +7,17 @@ class Bureaucrat
 {
 private:
 	const std::string	name;
-	unsigned			grade;
+	int					grade;
 public:
 	Bureaucrat();
-	Bureaucrat(const std::string name, unsigned grade);
+	Bureaucrat(const std::string name, int grade);
 	Bureaucrat(const Bureaucrat &other);
 	~Bureaucrat();
 	Bureaucrat&			operator=(const Bureaucrat &other);
 	std::string			getName() const;
-	unsigned			getGrade() const;
-	void				gradeUp(unsigned amount = 1);
-	void				gradeDown(unsigned amount = 1);
+	int			getGrade() const;
+	void				gradeUp(int amount = 1);
+	void				gradeDown(int amount = 1);
 
 	class GradeTooHighException : public std::exception
 	{
