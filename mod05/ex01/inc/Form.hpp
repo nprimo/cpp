@@ -16,6 +16,7 @@ private:
 public:
 	Form();
 	Form(const std::string name, const int grade_to_sign, const int grade_to_exec);
+	Form(const Form &other);
 	~Form();
 	Form&	operator=(const Form &other);
 	std::string	getName() const;
