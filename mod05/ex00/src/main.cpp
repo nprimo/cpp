@@ -2,12 +2,25 @@
 
 int main(void)
 {
-	const Bureaucrat	*a = new Bureaucrat("mario", 5);
-	const Bureaucrat	*b = new Bureaucrat();
-	const Bureaucrat	*c = new Bureaucrat(a);
+	Bureaucrat	a("mario", 5);
+	Bureaucrat	b;
+	Bureaucrat	c (a);
 
-	delete a;
-	delete b;
-	delete c;
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << c << std::endl;
+
+	a.gradeDown();
+	b.gradeUp(10);
+	c.gradeDown(20);
+
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+	std::cout << c << std::endl;
+
+	b = a;
+
+	std::cout << b << std::endl;
+	std::cout << a << std::endl;
 	return (0);
 }

@@ -12,12 +12,14 @@ public:
 	Bureaucrat();
 	Bureaucrat(const std::string name, unsigned grade);
 	Bureaucrat(const Bureaucrat &other);
-	virtual ~Bureaucrat();
-	virtual Bureaucrat&	operator=(const Bureaucrat &other);
-	std::string			getName();
-	unsigned			getGrade();
+	~Bureaucrat();
+	Bureaucrat&			operator=(const Bureaucrat &other);
+	std::string			getName() const;
+	unsigned			getGrade() const;
 	void				gradeUp(unsigned amount = 1);
 	void				gradeDown(unsigned amount = 1);
 };
+
+std::ostream&	operator<<(std::ostream& out, const Bureaucrat &val);
 
 #endif
