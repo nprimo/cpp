@@ -5,7 +5,7 @@
 
 class Bureaucrat
 {
-protected:
+private:
 	const std::string	name;
 	unsigned			grade;
 public:
@@ -18,6 +18,17 @@ public:
 	unsigned			getGrade() const;
 	void				gradeUp(unsigned amount = 1);
 	void				gradeDown(unsigned amount = 1);
+
+	class GradeTooHighException : public std::exception
+	{
+		public:
+			virtual const char*	what() const throw();
+	};
+	class GradeTooLowException : public std::exception
+	{
+		public:
+			virtual const char*	what() const throw();
+	};
 };
 
 std::ostream&	operator<<(std::ostream& out, const Bureaucrat &val);

@@ -4,7 +4,9 @@ int main(void)
 {
 	Bureaucrat	a("mario", 5);
 	Bureaucrat	b;
-	Bureaucrat	c (a);
+	Bureaucrat	c(a);
+	// Bureaucrat	d("someone", 0);
+	Bureaucrat	e("someone else", 151);
 
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
