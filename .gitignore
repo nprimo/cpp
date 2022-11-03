@@ -14,6 +14,10 @@ violence
 sed
 harl
 
+# mod01 tester files
+*.replace
+txt*
+
 # mod 02 binaries
 fixed
 fixed1
@@ -28,8 +32,5 @@ frag
 poly
 fire
 
-# mod01 tester files
-*.replace
-txt*
-
-
+# mode 05 binaries
+buro
