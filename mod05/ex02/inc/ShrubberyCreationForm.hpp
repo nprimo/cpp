@@ -18,7 +18,6 @@ public:
 	virtual ~ShrubberyCreationForm();
 	ShrubberyCreationForm&	operator=(const ShrubberyCreationForm &other);
 	std::string	getTarget() const;
-	void		createShrub();
 	virtual void	execute(const Bureaucrat &executor) const;
 };
 
