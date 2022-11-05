@@ -14,7 +14,7 @@ AForm::AForm(const std::string name, const int grade_to_sign, const int grade_to
 }
 
 AForm::AForm(const AForm &other)
-	: name(other.getName()), grade_to_exec(other.getGradeToExec()), grade_to_sign(other.getGradeToSign())
+	: name(other.getName()), grade_to_sign(other.getGradeToSign()), grade_to_exec(other.getGradeToExec())
 {
 	this->sign = other.isSign();
 }
@@ -41,6 +41,7 @@ bool	AForm::isSign() const
 {
 	return (this->sign);
 }
+
 int		AForm::getGradeToSign() const
 {
 	return (this->grade_to_sign);

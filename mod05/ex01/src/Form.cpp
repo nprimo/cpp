@@ -14,7 +14,7 @@ Form::Form(const std::string name, const int grade_to_sign, const int grade_to_e
 }
 
 Form::Form(const Form &other)
-	: name(other.getName()), grade_to_exec(other.getGradeToExec()), grade_to_sign(other.getGradeToSign())
+	: name(other.getName()), grade_to_sign(other.getGradeToSign()), grade_to_exec(other.getGradeToExec())
 {
 	this->sign = other.isSign();
 }
