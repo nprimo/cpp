@@ -40,26 +40,19 @@ AForm*	Intern::makeForm(std::string form_name, std::string target)
 		&Intern::makePresidentialForm
 	};
 
-	try
+	int i;
+	for (i = 0; i < 3; i++)
 	{
-		int i;
-		for (i = 0; i < 3; i++)
-		{
-			if (available_form[i].compare(0, form_name.size(), form_name) == 0)
-				break ;
-		}
-		if (i < 3)
-		{
-			std::cout << "Intern create " << form_name << std::endl;
-			new_form = CALL_MEMBER_FN(*this, makeFormList[i])(target);
-		}
-		else
-			throw Intern::FormTypeIsNotValid();
+		if (available_form[i].compare(0, form_name.size(), form_name) == 0)
+			break ;
 	}
-	catch (std::exception &e)
+	if (i < 3)
 	{
-		std::cout << "Error: " << e.what() << std::endl;
+		std::cout << "Intern create " << form_name << std::endl;
+		new_form = CALL_MEMBER_FN(*this, makeFormList[i])(target);
 	}
+	else
+		throw Intern::FormTypeIsNotValid();
 	return (new_form);
 }
 

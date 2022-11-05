@@ -13,12 +13,17 @@ int main(void)
 	AForm		*newForm;
 	Bureaucrat	mario("mario", 5);
 
-	newForm = randomIntern.makeForm("shrubbery form", "home");
-	if (newForm)
+	try
 	{
+		newForm = randomIntern.makeForm(" form", "home");
 		mario.signForm(*newForm);
 		mario.executeForm(*newForm);
 		delete newForm;
+
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "Error: " << e.what() << std::endl;
 	}
 	return 0;
 }
