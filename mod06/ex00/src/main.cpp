@@ -12,5 +12,6 @@ int main(int ac, char *av[])
     std::cout << "Is int: " << c.isInt() << std::endl;
     std::cout << "Is double: " << c.isDouble() << std::endl;
     std::cout << "Is float: "  << c.isFloat() << std::endl;
+    std::cout << "Stoi result: " << ft_stoi(c.getVal()) << std::endl;
     return (0);
 }

@@ -1,14 +1,31 @@
 #include "../inc/Conversion.hpp"
-#include <cctype>
+
+int ft_stoi(const std::string s)
+{
+    int i;
+    std::istringstream(s) >> i;
+    return i;
+}
 
 Conversion::Conversion()
 {
     this->val = "";
+    this->type = T_OUT;
 }
 
 Conversion::Conversion(const Conversion &other)
 {
     this->val = other.getVal();
+    if (this->isChar())
+        this->type = T_CHAR;
+    else if (this->isInt())
+        this->type = T_INT;
+    else if (this->isDouble())
+        this->type = T_DOUBLE;
+    else if (this->isFloat())
+        this->type = T_FLOAT;
+    else
+        this->type = T_OUT;
 }
 
 Conversion::Conversion(char *val) 
@@ -23,6 +40,11 @@ Conversion::~Conversion()
 std::string Conversion::getVal() const
 {
     return this->val;
+}
+
+Conversion::t_type  Conversion::getType() const
+{
+    return this->type;
 }
 
 Conversion& Conversion::operator=(const Conversion &other)
@@ -96,4 +118,13 @@ bool Conversion::isFloat()
     if (this->val[i])
         return false;
     return true;
+}
+
+std::ostream& operator<<(std::ostream& out, const Conversion &v)
+{
+    out << "char: " << "something" << std::endl;
+    out << "int: " << "something" << std::endl;
+    out << "float: " << "something" << std::endl;
+    out << "double: " << "something" << std::endl;
+    return (out);
 }
