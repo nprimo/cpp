@@ -24,6 +24,6 @@ fclean: clean
 re: fclean all
 
 run: $(NAME)
-	@./sed
+	@./$(NAME)
 
 .PHONY: all, clean, fclean, re

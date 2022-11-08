@@ -6,16 +6,17 @@
 # include <string>
 # include <iomanip>
 
+typedef enum e_type
+{
+    T_CHAR,
+    T_INT,
+    T_FLOAT,
+    T_DOUBLE,
+    T_OUT
+} t_type;
+
 class Conversion
 {
-    typedef enum e_type
-    {
-        T_CHAR,
-        T_INT,
-        T_FLOAT,
-        T_DOUBLE,
-        T_OUT
-    } t_type;
 
     private:
         std::string val;
@@ -25,6 +26,7 @@ class Conversion
         Conversion(const Conversion &other);
         Conversion(char *val);
         ~Conversion();
+        void        assignType();
         std::string getVal() const;
         t_type      getType() const;
         Conversion& operator=(const Conversion &other);

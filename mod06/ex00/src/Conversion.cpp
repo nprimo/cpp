@@ -16,16 +16,7 @@ Conversion::Conversion()
 Conversion::Conversion(const Conversion &other)
 {
     this->val = other.getVal();
-    if (this->isChar())
-        this->type = T_CHAR;
-    else if (this->isInt())
-        this->type = T_INT;
-    else if (this->isDouble())
-        this->type = T_DOUBLE;
-    else if (this->isFloat())
-        this->type = T_FLOAT;
-    else
-        this->type = T_OUT;
+    this->type = T_OUT;
 }
 
 Conversion::Conversion(char *val) 
@@ -42,7 +33,7 @@ std::string Conversion::getVal() const
     return this->val;
 }
 
-Conversion::t_type  Conversion::getType() const
+t_type  Conversion::getType() const
 {
     return this->type;
 }
@@ -120,11 +111,39 @@ bool Conversion::isFloat()
     return true;
 }
 
+void Conversion::assignType()
+{
+    if (this->isChar())
+    {
+        this->type = T_CHAR;
+    }
+    else if (this->isInt())
+    {
+        this->type = T_INT;
+    }
+    else if (this->isDouble())
+    {
+        this->type = T_DOUBLE;
+    }
+    else if (this->isFloat())
+    {
+        this->type = T_FLOAT;
+    }
+    else
+    {
+        this->type = T_OUT;
+    }
+}
+
 std::ostream& operator<<(std::ostream& out, const Conversion &v)
 {
-    out << "char: " << "something" << std::endl;
-    out << "int: " << "something" << std::endl;
-    out << "float: " << "something" << std::endl;
-    out << "double: " << "something" << std::endl;
+    std::string type_list[] = {
+        "char", "int", "float", "double", "not valid"
+    };
+    out << "type: " << type_list[v.getType()] << std::endl;
+    out << "char: " << v.getVal() << std::endl;
+    out << "int: " << v.getVal() << std::endl;
+    out << "float: " << v.getVal() << std::endl;
+    out << "double: " << v.getVal() << std::endl;
     return (out);
 }
