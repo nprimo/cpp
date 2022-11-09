@@ -1,4 +1,5 @@
 #include "../inc/Conversion.hpp"
+#include <string>
 
 int main(int ac, char *av[])
 {

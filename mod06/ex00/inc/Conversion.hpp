@@ -21,6 +21,7 @@ class Conversion
     private:
         std::string val;
         t_type      type;
+        bool        isSpecial;
     public:
         Conversion();
         Conversion(const Conversion &other);

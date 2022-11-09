@@ -1,4 +1,5 @@
 #include "../inc/Conversion.hpp"
+#include <string>
 
 int ft_stoi(const std::string s)
 {
@@ -11,12 +12,14 @@ Conversion::Conversion()
 {
     this->val = "";
     this->type = T_OUT;
+    this->isSpecial = false;
 }
 
 Conversion::Conversion(const Conversion &other)
 {
     this->val = other.getVal();
     this->type = T_OUT;
+    this->isSpecial = false;
 }
 
 Conversion::Conversion(char *val) 
@@ -66,12 +69,30 @@ bool Conversion::isInt()
     return true;
 }
 
+bool isInList(std::string val, std::string list[])
+{
+    int list_size = 2; 
+
+    for (int i = 0; i < list_size; i++)
+    {
+        if (val.compare(0, list[i].size() + 1, list[i]) == 0)
+            return true;
+    }
+    return false;
+}
+
 bool Conversion::isDouble()
 {
     int i = 0;
+    std::string special_list[] = { "nan", "inf" };
 
     if (this->val[i] == '-')
         i++;
+    if (isInList(this->val.substr(0), special_list))
+    {
+        this->isSpecial = true;
+        return true;
+    }
     for (i = i; i < (int)this->val.size(); i++) {
         if (!std::isdigit(this->val[i]))
             break ;
@@ -89,9 +110,15 @@ bool Conversion::isDouble()
 bool Conversion::isFloat()
 {
     int i = 0;
+    std::string special_list[] = { "nanf", "inff" };
 
     if (this->val[i] == '-')
         i++;
+    if (isInList(this->val.substr(0), special_list))
+    {
+        this->isSpecial = true;
+        return true;
+    }
     for (i = i; i < (int)this->val.size(); i++) {
         if (!std::isdigit(this->val[i]))
             break ;
@@ -114,25 +141,15 @@ bool Conversion::isFloat()
 void Conversion::assignType()
 {
     if (this->isChar())
-    {
         this->type = T_CHAR;
-    }
     else if (this->isInt())
-    {
         this->type = T_INT;
-    }
     else if (this->isDouble())
-    {
         this->type = T_DOUBLE;
-    }
     else if (this->isFloat())
-    {
         this->type = T_FLOAT;
-    }
     else
-    {
         this->type = T_OUT;
-    }
 }
 
 std::ostream& operator<<(std::ostream& out, const Conversion &v)
