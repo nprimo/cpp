@@ -1,6 +1,5 @@
 #include "../inc/Data.hpp"
 
-
 Data::Data()
 {}
 
