@@ -1,4 +1,5 @@
 #include "../inc/Conversion.hpp"
+#include <sstream>
 #include <string>
 
 int ft_stoi(const std::string s)
@@ -88,7 +89,7 @@ bool Conversion::isDouble()
 
     if (this->val[i] == '-')
         i++;
-    if (isInList(this->val.substr(0), special_list))
+    if (isInList(this->val.substr(i), special_list))
     {
         this->isSpecial = true;
         return true;
@@ -114,7 +115,7 @@ bool Conversion::isFloat()
 
     if (this->val[i] == '-')
         i++;
-    if (isInList(this->val.substr(0), special_list))
+    if (isInList(this->val.substr(i), special_list))
     {
         this->isSpecial = true;
         return true;
@@ -152,15 +153,88 @@ void Conversion::assignType()
         this->type = T_OUT;
 }
 
+std::string Conversion::toChar() const
+{
+    int i = ft_stoi(this->val);
+    std::stringstream ss;
+    std::string s;
+
+    if (this->type == T_CHAR)
+        return this->val;
+    if (this->isSpecial == true)
+        return "impossible";
+    if (i < ' ' || i > '~')
+        return "not displayable";
+    ss << "'" << (char)i << "'";
+    ss >> s;
+    return s;
+}
+
+std::string Conversion::toInt() const
+{
+    int i = ft_stoi(this->val);
+    if (this->type == T_CHAR)
+        i = (char)this->val[0];
+    std::string s;
+    std::stringstream ss;
+
+    if (this->type == T_INT)
+        return this->val;
+    if (this->isSpecial == true)
+        return "impossible";
+    ss << i;
+    ss >> s;
+    return (s);
+}
+
+std::string Conversion::toDouble() const
+{
+    int i = ft_stoi(this->val);
+    if (this->type == T_CHAR)
+        i = (int)this->val[0];
+    std::string s;
+    std::stringstream ss;
+
+    if (this->type == T_INT || this->type == T_CHAR)
+    {
+        ss << i << ".0";
+        ss >> s;
+    }
+    if (this->type == T_DOUBLE)
+        return this->val;
+    if (this->type == T_FLOAT)
+        return this->val.substr(0, this->val.size() - 1);
+    return s;
+}
+
+std::string Conversion::toFloat() const
+{
+    int i = ft_stoi(this->val);
+    if (this->type == T_CHAR)
+        i = (int)this->val[0];
+    std::string s;
+    std::stringstream ss;
+
+    if (this->type == T_FLOAT)
+        return this->val;
+    if (this->type == T_INT || this->type == T_CHAR)
+        ss << i << ".0";
+    if (this->isSpecial)
+        ss << this->val;
+    ss << "f"; 
+    ss >> s;
+    return s;
+}
+
 std::ostream& operator<<(std::ostream& out, const Conversion &v)
 {
     std::string type_list[] = {
         "char", "int", "float", "double", "not valid"
     };
     out << "type: " << type_list[v.getType()] << std::endl;
-    out << "char: " << v.getVal() << std::endl;
-    out << "int: " << v.getVal() << std::endl;
-    out << "float: " << v.getVal() << std::endl;
-    out << "double: " << v.getVal() << std::endl;
+    out << "char: " << v.toChar() << std::endl;
+    out << "int: " << v.toInt() << std::endl;
+    out << "float: " << v.toFloat() << std::endl;
+    out << "double: " << v.toDouble() << std::endl;
     return (out);
 }

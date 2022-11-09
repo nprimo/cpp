@@ -35,6 +35,10 @@ class Conversion
         bool        isInt();
         bool        isFloat();
         bool        isDouble();
+        std::string toChar() const;
+        std::string toInt() const;
+        std::string toFloat() const;
+        std::string toDouble() const;
 };
 
 std::ostream& operator<<(std::ostream& out, const Conversion &v);
