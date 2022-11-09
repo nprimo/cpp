@@ -1,17 +1,10 @@
 #include "../inc/Conversion.hpp"
-#include <sstream>
-#include <string>
-
-int ft_stoi(const std::string s)
-{
-    int i;
-    std::istringstream(s) >> i;
-    return i;
-}
+#include "../inc/utils.hpp"
 
 Conversion::Conversion()
 {
     this->val = "";
+	this->val_i = 0;
     this->type = T_OUT;
     this->isSpecial = false;
 }
@@ -19,18 +12,21 @@ Conversion::Conversion()
 Conversion::Conversion(const Conversion &other)
 {
     this->val = other.getVal();
-    this->type = T_OUT;
-    this->isSpecial = false;
 }
 
 Conversion::Conversion(char *val) 
 {
     this->val = static_cast<std::string>(val);
+	this->assignType();
+	this->assignIsSpecial();
+	if (this->type == T_CHAR)
+        this->val_i = (char)this->val[0];
+	else
+		this->val_i = ft_stoi(this->val);
 }
 
 Conversion::~Conversion()
-{
-}
+{}
 
 std::string Conversion::getVal() const
 {
@@ -48,156 +44,80 @@ Conversion& Conversion::operator=(const Conversion &other)
     return *this;
 }
 
-bool Conversion::isChar()
-{
-    if (this->val.size() == 1 && !std::isdigit(this->val[0]))
-        return true;
-    else
-        return false;
-}
-
-bool Conversion::isInt()
-{
-    int i = 0;
-    
-    if (this->val[i] == '-')
-        i++;
-    for (i = i; i < (int)this->val.size(); i++)
-    {
-        if (!std::isdigit(this->val[i]))
-            return false;
-    }
-    return true;
-}
-
-bool isInList(std::string val, std::string list[])
-{
-    int list_size = 2; 
-
-    for (int i = 0; i < list_size; i++)
-    {
-        if (val.compare(0, list[i].size() + 1, list[i]) == 0)
-            return true;
-    }
-    return false;
-}
-
-bool Conversion::isDouble()
-{
-    int i = 0;
-    std::string special_list[] = { "nan", "inf" };
-
-    if (this->val[i] == '-')
-        i++;
-    if (isInList(this->val.substr(i), special_list))
-    {
-        this->isSpecial = true;
-        return true;
-    }
-    for (i = i; i < (int)this->val.size(); i++) {
-        if (!std::isdigit(this->val[i]))
-            break ;
-    }
-    if (this->val[i] != '.')
-        return false;
-    i++;
-    for (i = i; i < (int)this->val.size(); i++) {
-        if (!std::isdigit(this->val[i]))
-           return false; 
-    }
-    return true;
-}
-
-bool Conversion::isFloat()
-{
-    int i = 0;
-    std::string special_list[] = { "nanf", "inff" };
-
-    if (this->val[i] == '-')
-        i++;
-    if (isInList(this->val.substr(i), special_list))
-    {
-        this->isSpecial = true;
-        return true;
-    }
-    for (i = i; i < (int)this->val.size(); i++) {
-        if (!std::isdigit(this->val[i]))
-            break ;
-    }
-    if (this->val[i] != '.')
-        return false;
-    i++;
-    for (i = i; i < (int)this->val.size(); i++) {
-        if (!std::isdigit(this->val[i]))
-            break ;
-    }
-    if (this->val[i] != 'f')
-        return false;
-    i++;
-    if (this->val[i])
-        return false;
-    return true;
-}
-
 void Conversion::assignType()
 {
-    if (this->isChar())
+    if (isChar(this->val))
         this->type = T_CHAR;
-    else if (this->isInt())
+    else if (isInt(this->val))
         this->type = T_INT;
-    else if (this->isDouble())
+    else if (isDouble(this->val))
         this->type = T_DOUBLE;
-    else if (this->isFloat())
+    else if (isFloat(this->val))
         this->type = T_FLOAT;
     else
         this->type = T_OUT;
 }
 
+void Conversion::assignIsSpecial()
+{
+	int i = 0;
+	this->isSpecial = false;
+	if (this->type == T_FLOAT || this->type == T_DOUBLE)
+		this->val[i] == '-' && i++;
+	if (this->type == T_FLOAT)
+	{
+   		std::string special_list[] = { "nanf", "inff" };
+		if (isInList(this->val.substr(i), special_list))
+			this->isSpecial = true;
+	}
+	else if (this->type == T_DOUBLE)
+	{
+		std::string special_list[] = { "nan", "inf" };
+		if (isInList(this->val.substr(i), special_list))
+			this->isSpecial = true;
+	}
+}
+
 std::string Conversion::toChar() const
 {
-    int i = ft_stoi(this->val);
     std::stringstream ss;
     std::string s;
 
+	if (this->type == T_OUT || this->isSpecial == true)
+		return "impossible";
     if (this->type == T_CHAR)
         return this->val;
-    if (this->isSpecial == true)
-        return "impossible";
-    if (i < ' ' || i > '~')
+    if (this->val_i < ' ' || this->val_i > '~')
         return "not displayable";
-    ss << "'" << (char)i << "'";
+    ss << "'" << (char)this->val_i << "'";
     ss >> s;
     return s;
 }
 
 std::string Conversion::toInt() const
 {
-    int i = ft_stoi(this->val);
-    if (this->type == T_CHAR)
-        i = (char)this->val[0];
     std::string s;
     std::stringstream ss;
 
+    if (this->isSpecial == true || this->type == T_OUT)
+        return "impossible";
     if (this->type == T_INT)
         return this->val;
-    if (this->isSpecial == true)
-        return "impossible";
-    ss << i;
+    ss << this->val_i;
     ss >> s;
     return (s);
 }
 
 std::string Conversion::toDouble() const
 {
-    int i = ft_stoi(this->val);
-    if (this->type == T_CHAR)
-        i = (int)this->val[0];
     std::string s;
     std::stringstream ss;
 
+	if (this->type == T_OUT)
+		return "impossible";
     if (this->type == T_INT || this->type == T_CHAR)
     {
-        ss << i << ".0";
+        ss << this->val_i << ".0";
         ss >> s;
     }
     if (this->type == T_DOUBLE)
@@ -209,16 +129,15 @@ std::string Conversion::toDouble() const
 
 std::string Conversion::toFloat() const
 {
-    int i = ft_stoi(this->val);
-    if (this->type == T_CHAR)
-        i = (int)this->val[0];
     std::string s;
     std::stringstream ss;
 
+	if (this->type == T_OUT)
+		return "impossible";
     if (this->type == T_FLOAT)
         return this->val;
     if (this->type == T_INT || this->type == T_CHAR)
-        ss << i << ".0";
+        ss << this->val_i << ".0";
     if (this->isSpecial)
         ss << this->val;
     ss << "f"; 

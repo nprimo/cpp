@@ -20,6 +20,7 @@ class Conversion
 
     private:
         std::string val;
+		int			val_i;
         t_type      type;
         bool        isSpecial;
     public:
@@ -28,13 +29,11 @@ class Conversion
         Conversion(char *val);
         ~Conversion();
         void        assignType();
+		void		assignIsSpecial();
         std::string getVal() const;
         t_type      getType() const;
         Conversion& operator=(const Conversion &other);
-        bool        isChar();
-        bool        isInt();
-        bool        isFloat();
-        bool        isDouble();
+
         std::string toChar() const;
         std::string toInt() const;
         std::string toFloat() const;
@@ -42,7 +41,5 @@ class Conversion
 };
 
 std::ostream& operator<<(std::ostream& out, const Conversion &v);
-
-int ft_stoi(const std::string s);
 
 #endif
