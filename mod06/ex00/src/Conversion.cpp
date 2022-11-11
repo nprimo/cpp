@@ -138,7 +138,7 @@ std::string Conversion::toFloat() const
         return this->val;
     if (this->type == T_INT || this->type == T_CHAR)
         ss << this->val_i << ".0";
-    if (this->isSpecial)
+    if (this->isSpecial || this->type == T_DOUBLE)
         ss << this->val;
     ss << "f"; 
     ss >> s;
