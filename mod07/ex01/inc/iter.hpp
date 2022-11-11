@@ -14,4 +14,6 @@ void	iter(T array[], const unsigned &len, void (*f)(T))
 	}
 }
 
+// add more templates to cover more cases
+
 #endif

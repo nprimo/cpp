@@ -1,6 +1,7 @@
 *.o
 .vscode
 */.gitignore
+test/
 
 # mod 00 binaries
 megaphone
