@@ -14,6 +14,16 @@ void	iter(T array[], const unsigned &len, void (*f)(T))
 	}
 }
 
-// add more templates to cover more cases
+template< typename T, typename U >
+void	iter(T array[], const unsigned &len, U f)
+{
+	for (unsigned i = 0; i < len; i++) {
+		try {
+			f(array[i]);
+		} catch(std::exception e) {
+			std::cout << "error: " << e.what() << std::endl;
+		}
+	}
+}
 
 #endif
