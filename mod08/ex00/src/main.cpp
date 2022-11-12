@@ -29,12 +29,12 @@ int main()
 	// std::cout << std::endl;
 	try {
 		std::cout << "easy find: " << easyFind(v1, 2) << std::endl;
-	} catch (std::exception e) {
+	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 	try {
 		std::cout << "easy find: " << easyFind(l1, 2) << std::endl;
-	} catch (std::exception e) {
+	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 }

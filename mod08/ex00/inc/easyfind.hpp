@@ -3,11 +3,9 @@
 
 # include <algorithm>
 
-class NoMatchFound : public std::exception
-{
+class NoMatchFound : public std::exception {
 	public:
-		const char *what() const throw()
-		{
+		const char *what() const throw() {
 			return ("No match found!");
 		}
 };
