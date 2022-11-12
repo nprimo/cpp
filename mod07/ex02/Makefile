@@ -4,7 +4,7 @@ SRC = $(shell find src/*.cpp)
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Wall -fsanitize=address -std=c++98
+CFLAGS = -Wall -Wextra -Wall -fsanitize=address -std=c++98 -g
 RM = rm -rf
 
 %.o: %.cpp

@@ -13,10 +13,12 @@ int main(int, char**)
         numbers[i] = value;
         mirror[i] = value;
     }
+	std::cout << "Numbers:\n" << numbers;
     //SCOPE
     {
         Array<int> tmp = numbers;
-        Array<int> test(numbers);
+        Array<int> test(tmp);
+		std::cout << "Value in position 0:\n" << numbers[MAX_VAL - 1] << "\n" << test[MAX_VAL - 1] << std::endl;
     }
 
     for (int i = 0; i < MAX_VAL; i++)
@@ -35,19 +37,19 @@ int main(int, char**)
     {
         std::cerr << e.what() << '\n';
     }
-    // try
-    // {
-    //     numbers[MAX_VAL] = 0;
-    // }
-    // catch(const std::exception& e)
-    // {
-    //     std::cerr << e.what() << '\n';
-    // }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
-    // for (int i = 0; i < MAX_VAL; i++)
-    // {
-    //     numbers[i] = rand();
-    // }
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
     delete [] mirror;//
     return 0;
 }
