@@ -28,7 +28,7 @@ public:
 		}
 	}
 	~Array() { delete[] this->_content; }
-	Array&	operator=(const T &other)
+	Array&	operator=(const Array &other)
 	{
 		this->_size = other.size();
 		delete[] this->_content;
