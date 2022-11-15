@@ -42,8 +42,13 @@ buro3
 
 # mod 06 binaries
 scalar
+easyfind
 
 # mod 07 binaries
 template
 iter
 array
+
+# mod 08 binaries
+span
+
