@@ -3,7 +3,7 @@
 #include <exception>
 #include <stdlib.h>
 
-#define SIZE 1000000
+#define SIZE 10000
 
 int main() {
     Span a (SIZE);
@@ -18,7 +18,7 @@ int main() {
         std::cout << "Error: " << e.what() << std::endl;
     }
 
-    std::cout << a << std::endl;
+    //std::cout << a << std::endl;
     std::cout << "Shortest span: " << a.shortestSpan() << std::endl;
     std::cout << "Longest span: " << a.longestSpan() << std::endl;
     return 0;

@@ -1,4 +1,6 @@
 #include "../inc/Span.hpp"
+#include <algorithm>
+#include <vector>
 
 Span::Span() : _content(), _size(0) {} 
 
@@ -38,13 +40,18 @@ void Span::addNumber(int new_number) {
 }
 
 int Span::shortestSpan() {
+    std::vector<int> span_list; 
+
     std::sort( _content.begin(), _content.end() );
-    return ( _content[_size / 2 + 1] - _content[_size / 2] );
+    for (std::vector<int>::iterator i = _content.begin(); i != _content.end() - 1; i++) {
+        span_list.push_back(*(i + 1) - *i);
+    }
+    return ( *std::min_element(span_list.begin(), span_list.end()) );
 }
 
 int Span::longestSpan() {
-    std::sort( _content.begin(), _content.end() );
-    return ( _content.back() - _content.front() );
+    return ( *std::max_element(_content.begin(), _content.end()) -
+        *std::min_element(_content.begin(), _content.end()) );
 }
 
 const char* Span::OutOfBound::what() const throw() {
