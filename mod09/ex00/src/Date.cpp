@@ -29,3 +29,10 @@ Date	&Date::operator=(const Date &other) {
 	_day = other._day;
 	return (*this);
 }
+
+std::string	Date::toStr() {
+	std::stringstream	ss;
+
+	ss << _year << "-" << _month << "-" << _day;
+	return (ss.str());
+}
