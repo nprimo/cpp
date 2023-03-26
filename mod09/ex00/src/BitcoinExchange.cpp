@@ -50,6 +50,6 @@ float	BitcoinExchange::getExchangeValue(std::string date_str) {
 			delta++;
 		}
 	}
-	std::cout << "new date: " << new_date.toStr() << std::endl;
+	// std::cout << "new date: " << new_date.toStr() << std::endl;
 	return (_exchange[new_date.toStr()]);
 }

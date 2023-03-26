@@ -27,17 +27,16 @@ int main(int ac, char **av) {
 
 	if (file.is_open()) {
 		while(getline(file, line)) {
-			std::cout << "==========" << std::endl;
-			std::cout << line << std::endl;
-
 			if (line.find("|") != std::string::npos) {
 				std::string		date_str = line.substr(0, line.find(" |"));
 				std::string 	value_str = line.substr(line.find("|") + 1);
 
 				if (isValidValue(value_str) && isValidDate(date_str)) {
 					float	value = strToFloat(value_str);
-					std::cout << "value: " << value << std::endl;
-					std::cout << "exchange of date: " << exchange.getExchangeValue(date_str) << std::endl;
+					float	exchange_value = exchange.getExchangeValue(date_str);
+
+					std::cout << date_str << " => " << value << " = " << \
+						exchange_value * value << std::endl;
 				} else {
 					std::cout << "Error: wrong value format" << std::endl;
 				}

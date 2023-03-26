@@ -50,8 +50,26 @@ Date	Date::operator+(int delta) {
 	new_date._day += delta;
 	// make cases when new_day is less then 1 -> month need to be -1 
 	//		- if month is less than 1 need to make year -1 
+	if (new_date._day < 1) {
+		new_date._month -= 1;
+		if (new_date._month < 1) {
+			new_date._year -= 1;
+			new_date._month = 12;
+			new_date._day = 31;
+		}
+		new_date._day = days_in_month[new_date._month];
+	}
 	// make cases when new_days is more then days_in month -> month need to be +1
 	//		- if month is more than 12 need to make year +1 
+	if (new_date._day > days_in_month[new_date._month]) {
+		new_date._month += 1;
+		if (new_date._month > 12) {
+			new_date._year += 1;
+			new_date._month = 1;
+			new_date._day = 31;
+		}
+		new_date._day = days_in_month[new_date._month];
+	}
 	return (new_date);
 }
 
