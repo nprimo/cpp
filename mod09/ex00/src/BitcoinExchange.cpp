@@ -35,5 +35,21 @@ BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other) {
 BitcoinExchange::~BitcoinExchange() {}
 
 float	BitcoinExchange::getExchangeValue(std::string date_str) {
-	return _exchange[date_str];
+	Date	current_date = Date(date_str);
+	Date	new_date = current_date;
+
+	unsigned	count = 0;
+	int		 	delta = 1;
+
+	while (_exchange.find(new_date.toStr()) == _exchange.end()) {
+		new_date = (count % 2 == 0) ? 
+			new_date + (-delta) :
+			new_date + delta;
+		count++;
+		if (count != 0 && count % 2 == 0) {
+			delta++;
+		}
+	}
+	std::cout << "new date: " << new_date.toStr() << std::endl;
+	return (_exchange[new_date.toStr()]);
 }
