@@ -7,10 +7,11 @@ class Date {
 	private:
 		int 				_year;
 		int					_month;
-		int 				_date;
+		int 				_day;
 
 	public:
 		Date();
+		Date(std::string date_str);
 		Date(const Date &other);
 		~Date();
 		Date	&operator=(const Date &other);
