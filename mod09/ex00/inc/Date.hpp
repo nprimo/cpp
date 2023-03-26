@@ -15,6 +15,7 @@ class Date {
 		Date(const Date &other);
 		~Date();
 		Date	&operator=(const Date &other);
+		Date	operator+(int delta);
 		std::string	toStr();
 };
 
