@@ -34,11 +34,10 @@ int main(int ac, char **av) {
 				std::string		date_str = line.substr(0, line.find(" |"));
 				std::string 	value_str = line.substr(line.find("|") + 1);
 
-				isValidDate(date_str);
-				// std::cout << "exchange of date: " << exchange.getExchangeValue(date_str) << std::endl;
-				if (isValidValue(value_str)) {
+				if (isValidValue(value_str) && isValidDate(date_str)) {
 					float	value = strToFloat(value_str);
 					std::cout << "value: " << value << std::endl;
+					std::cout << "exchange of date: " << exchange.getExchangeValue(date_str) << std::endl;
 				} else {
 					std::cout << "Error: wrong value format" << std::endl;
 				}

@@ -75,9 +75,9 @@ bool	isValidDate(std::string	date_str) {
 		) {
 		return false;
 	}
-	std::cout << "year: " << year << std::endl;
-	std::cout << "month: " << month << std::endl;
-	std::cout << "day: " << day << std::endl;
+	// std::cout << "year: " << year << std::endl;
+	// std::cout << "month: " << month << std::endl;
+	// std::cout << "day: " << day << std::endl;
 	return true;
 }
 
