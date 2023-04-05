@@ -1,5 +1,6 @@
 #include "utils.hpp"
 
+// checks
 bool is_valid_input(char **input_num) {
 	unsigned pos = 1;
 
@@ -15,18 +16,23 @@ bool is_valid_input(char **input_num) {
 	return true;
 }
 
+bool	is_preliminary_ok(int ac, char **av) {
+	if (ac == 1) {
+		std::cout << "Error! 1" << std::endl;
+		return false;
+	}
+	if (!is_valid_input(av)) {
+		std::cout << "Error! 2" << std::endl;
+		return false;
+	}
+	return true;
+}
+
+// general 
 int str_to_int(char *int_str) {
 	std::stringstream	ss(int_str);
 	int					num;
 
 	ss >> num;
 	return num;
-}
-
-
-void print_result() {
-	std::cout << "Unsorted input: " << std::endl;
-	std::cout << "sorted input: " << std::endl;
-	std::cout << "time to sort using container 1: " << std::endl;
-	std::cout << "time to sort using container 2: " << std::endl;
 }

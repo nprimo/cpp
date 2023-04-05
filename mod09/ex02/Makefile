@@ -1,7 +1,7 @@
 NAME = PmergeMe 
 
 CC = c++
-CFLAG = -Wall -Werror -Wextra -g -std=c++98
+CFLAG = -Wall -Werror -Wextra -g -fsanitize=address -std=c++98
 
 SRC = $(shell find src/*.cpp)
 OBJ = $(SRC:.cpp=.o)
@@ -24,7 +24,7 @@ fclean: clean
 re: fclean all
 
 test: all 
-	./$(NAME) 14 2 23 123 943 9 10 2
+	./$(NAME) 14 2 23 123 943 9 10 2 0
 
 .PHONY: all, clean, fclean, re
 
