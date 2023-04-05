@@ -26,7 +26,12 @@ int main(int ac, char **av) {
 	BitcoinExchange	exchange = BitcoinExchange(EXCHANGE_PATH);
 
 	if (file.is_open()) {
+		bool first_line = true;
 		while(getline(file, line)) {
+			if (first_line == true) {
+				first_line = false;
+				continue;
+			}
 			if (line.find("|") != std::string::npos) {
 				std::string		date_str = line.substr(0, line.find(" |"));
 				std::string 	value_str = line.substr(line.find("|") + 1);
