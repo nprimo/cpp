@@ -51,19 +51,19 @@ T	merge2( T left, T right) {
 }
 
 template<typename T>
-T	merge_sort2(T vec) {
-	if (vec.size() == 1)
-		return vec;
+T	merge_sort2(T container) {
+	if (container.size() == 1)
+		return container;
 
-	unsigned mid = vec.size() / 2;	
+	unsigned mid = container.size() / 2;	
 	T	left, right;
 
 	unsigned pos = 0;
-	while (pos < vec.size()) {
+	while (pos < container.size()) {
 		if (pos < mid)
-			left.push_back(vec[pos]);
+			left.push_back(container[pos]);
 		else
-			right.push_back(vec[pos]);
+			right.push_back(container[pos]);
 		pos++;
 	}
 
