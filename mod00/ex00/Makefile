@@ -4,7 +4,7 @@ SRC = megaphone.cpp
 OBJ = $(SRC:.cpp=.o)
 
 CC = c++
-CFLAGS = -Wall -Wextra -Wall -std=c++98
+CFLAGS = -Werror -Wextra -Wall -std=c++98
 DFLAGS = -g -fsanitize=address
 RM = rm -rf
 
